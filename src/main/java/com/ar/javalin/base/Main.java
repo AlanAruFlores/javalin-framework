@@ -1,5 +1,6 @@
 package com.ar.javalin.base;
 
+import io.javalin.Javalin;
 public class Main {
     public static void main(String[] args) {
         var app = Javalin.create(/*config*/)
