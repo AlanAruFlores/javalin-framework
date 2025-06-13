@@ -31,3 +31,4 @@ To run the application:
 ## Dependencies
 
 This project uses Javalin as its main dependency. Make sure to include it in your build file (pom.xml or build.gradle).
+ 
