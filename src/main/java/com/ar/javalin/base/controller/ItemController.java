@@ -9,7 +9,6 @@ import com.truncon.javalin.mvc.api.JsonResult;
 @Controller
 public final class ItemController {
     
-
     @HttpGet(route = "/index")
     public ActionResult index(){
         return new JsonResult(Item.builder()
