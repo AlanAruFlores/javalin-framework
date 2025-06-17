@@ -20,9 +20,14 @@ import io.javalin.openapi.plugin.swagger.SwaggerConfiguration;
 public final class App {
     public static void main(String[] args) throws IOException {
         Javalin app = Javalin.create(config -> {
-            // Remove the following line to disable Open API annotation processing
-            config.plugins.register(new OpenApiPlugin(getOpenApiOptions()));
-            config.plugins.register(new SwaggerPlugin(new SwaggerConfiguration()));
+            // Configure OpenAPI
+            OpenApiConfiguration openApiConfig = getOpenApiOptions();
+            config.plugins.register(new OpenApiPlugin(openApiConfig));
+            
+            // Configure Swagger
+            SwaggerConfiguration swaggerConfig = new SwaggerConfiguration();
+            swaggerConfig.setDocumentationPath("/swagger"); // Set Swagger UI path
+            config.plugins.register(new SwaggerPlugin(swaggerConfig));
             
             // Register you JSON mapper with whatever library you want
             ObjectMapper objectMapper = new ObjectMapper(); // customize as needed
@@ -49,9 +54,11 @@ public final class App {
 
     private static OpenApiConfiguration getOpenApiOptions() {
         OpenApiConfiguration configuration = new OpenApiConfiguration();
+        configuration.setDocumentationPath("/openapi");
         OpenApiInfo info = configuration.getInfo();
         info.setTitle("My API");
         info.setVersion("1.0");
+        info.setVersion("3.0.0");
         return configuration;
     }
 }
