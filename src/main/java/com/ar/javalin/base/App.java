@@ -6,15 +6,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import io.javalin.json.JavalinJackson;
 import io.javalin.json.JsonMapper;
 import com.truncon.javalin.mvc.ControllerRegistry;
-import com.truncon.javalin.mvc.JavalinControllerRegistry;
 import io.javalin.Javalin;
-import io.javalin.http.staticfiles.Location;
 import io.javalin.openapi.OpenApiInfo;
 import io.javalin.openapi.plugin.OpenApiConfiguration;
 import io.javalin.openapi.plugin.OpenApiPlugin;
 import io.javalin.openapi.plugin.swagger.SwaggerPlugin;
 import lombok.extern.slf4j.Slf4j;
 import io.javalin.openapi.plugin.swagger.SwaggerConfiguration;
+import com.truncon.javalin.mvc.JavalinControllerRegistry;
 
 @Slf4j
 public final class App {
@@ -26,7 +25,6 @@ public final class App {
             
             // Configure Swagger
             SwaggerConfiguration swaggerConfig = new SwaggerConfiguration();
-            swaggerConfig.setDocumentationPath("/swagger"); // Set Swagger UI path
             config.plugins.register(new SwaggerPlugin(swaggerConfig));
             
             // Register you JSON mapper with whatever library you want
@@ -54,11 +52,9 @@ public final class App {
 
     private static OpenApiConfiguration getOpenApiOptions() {
         OpenApiConfiguration configuration = new OpenApiConfiguration();
-        configuration.setDocumentationPath("/openapi");
         OpenApiInfo info = configuration.getInfo();
         info.setTitle("My API");
         info.setVersion("1.0");
-        info.setVersion("3.0.0");
         return configuration;
     }
 }
