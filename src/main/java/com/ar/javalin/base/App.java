@@ -7,6 +7,7 @@ import io.javalin.json.JavalinJackson;
 import io.javalin.json.JsonMapper;
 import com.truncon.javalin.mvc.ControllerRegistry;
 import io.javalin.Javalin;
+import io.javalin.http.staticfiles.Location;
 import io.javalin.openapi.OpenApiInfo;
 import io.javalin.openapi.plugin.OpenApiConfiguration;
 import io.javalin.openapi.plugin.OpenApiPlugin;
@@ -32,9 +33,8 @@ public final class App {
             JsonMapper jsonMapper = new JavalinJackson(objectMapper);
             config.jsonMapper(jsonMapper);
             
-            // This example is using the SPA feature with static files
-          //  config.staticFiles.add("./public", Location.EXTERNAL);
-          //  config.staticFiles.add("/", Location.EXTERNAL);
+            // Re-enabling static files from the 'public' directory
+            config.staticFiles.add("./public", Location.EXTERNAL);
         });
 
         // Javalin MVC generates "com.truncon.javalin.mvc.JavalinControllerRegistry" automatically at compile time
