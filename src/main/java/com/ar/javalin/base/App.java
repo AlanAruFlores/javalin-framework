@@ -53,7 +53,7 @@ public final class App {
     private static OpenApiConfiguration getOpenApiOptions() {
         OpenApiConfiguration configuration = new OpenApiConfiguration();
         OpenApiInfo info = configuration.getInfo();
-        info.setTitle("My API");
+        info.setTitle("Api Title");
         info.setVersion("1.0");
         return configuration;
     }
