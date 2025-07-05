@@ -50,11 +50,4 @@ public final class App {
         app.start(8080);
     }
 
-    private static OpenApiConfiguration getOpenApiOptions() {
-        OpenApiConfiguration configuration = new OpenApiConfiguration();
-        OpenApiInfo info = configuration.getInfo();
-        info.setTitle("Api Title");
-        info.setVersion("1.0");
-        return configuration;
-    }
 }
