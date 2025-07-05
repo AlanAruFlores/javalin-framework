@@ -7,7 +7,6 @@ import com.google.inject.Injector;
 /**
  * GuiceInjector is a class that implements the Injector interface
  * It is used to inject dependencies into the application
- * It is used to inject dependencies into the application
  */
 public final class GuiceInjector implements com.truncon.javalin.mvc.api.Injector{
 
