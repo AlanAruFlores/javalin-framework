@@ -41,6 +41,7 @@ public final class JavalinFactory {
     }
 
     private final Provider<Injector> injectorProvider;
+    private final ExceptionHandlerCon
 
     @Inject
     public JavalinFactory(Provider<Injector> injectorProvider){
@@ -75,6 +76,9 @@ public final class JavalinFactory {
             ctx.status(500);
         });
 
+        app.exception(Exception.class, (e, ctx) -> {
+            exceptionHandlerContext.handle(e, ctx);
+        });
 
         app.wsException(
             Exception.class,
