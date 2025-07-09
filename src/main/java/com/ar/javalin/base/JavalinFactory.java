@@ -3,6 +3,7 @@ package com.ar.javalin.base;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.ar.javalin.base.utils.PathUtilsConstants;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -61,7 +62,7 @@ public final class JavalinFactory {
             config.jsonMapper(jsonMapper);
             
             // Re-enabling static files from the 'public' directory
-            config.staticFiles.add("./public", Location.EXTERNAL);
+            config.staticFiles.add(PathUtilsConstants.WEB_RESOURCE_PATH, Location.EXTERNAL);
         });
 
         // Javalin MVC generates "com.truncon.javalin.mvc.JavalinControllerRegistry" automatically at compile time

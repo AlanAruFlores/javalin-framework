@@ -11,10 +11,10 @@ import com.typesafe.config.ConfigValue;
 import com.typesafe.config.ConfigValueType;
 
 public class AppSettings implements ApplicationSettings{
-    
-    private final ConfigWrapper configWrapper;
 
-    //DEFAULT CONFIGURATIONS
+    private static final String APPLICATION_CONFIG_PATH = "./src/main/resources/application.conf";
+
+    private final ConfigWrapper configWrapper;   
     private final Integer PORT_DEFAULT = 8080;
 
 
@@ -25,7 +25,7 @@ public class AppSettings implements ApplicationSettings{
 
 
     public static AppSettings newInstance() {
-        Path configurationPath = Paths.get("./config/application.conf");
+        Path configurationPath = Paths.get(APPLICATION_CONFIG_PATH);
         Config config = ConfigFactory.parseFile(configurationPath.toFile());
         ConfigWrapper wrapper = new ConfigWrapper(config);
         return new AppSettings(wrapper);
@@ -36,13 +36,20 @@ public class AppSettings implements ApplicationSettings{
         return getWebServerConfig().getInteger("port").orElse(PORT_DEFAULT);
     }
 
+    @Override 
+    public String getHtmlResourcePath(){
+        return getWebResourcesConfig().getString("html")
+            .orElseThrow(() -> new IllegalStateException("Resource path is not configured in application.conf"));
+    }
 
     public ConfigWrapper getWebServerConfig(){
         return this.configWrapper.atPath("web.server");
     }
 
+    public ConfigWrapper getWebResourcesConfig(){
+        return this.configWrapper.atPath("web.resources");
 
-
+    }
 
     private static final class ConfigWrapper {
         private final Config config;
