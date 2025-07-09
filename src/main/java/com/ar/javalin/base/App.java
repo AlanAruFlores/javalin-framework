@@ -1,60 +1,60 @@
 package com.ar.javalin.base;
 
 import java.io.IOException;
+import javax.inject.Inject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import com.ar.javalin.base.settings.ApplicationSettings;
+import com.google.inject.Guice;
+import com.google.inject.Injector;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import io.javalin.json.JavalinJackson;
-import io.javalin.json.JsonMapper;
-import com.truncon.javalin.mvc.ControllerRegistry;
 import io.javalin.Javalin;
-import io.javalin.http.staticfiles.Location;
-import io.javalin.openapi.OpenApiInfo;
-import io.javalin.openapi.plugin.OpenApiConfiguration;
-import io.javalin.openapi.plugin.OpenApiPlugin;
-import io.javalin.openapi.plugin.swagger.SwaggerPlugin;
-import lombok.extern.slf4j.Slf4j;
-import io.javalin.openapi.plugin.swagger.SwaggerConfiguration;
-import com.truncon.javalin.mvc.JavalinControllerRegistry;
 
-@Slf4j
+
 public final class App {
+
+    private static final Logger LOGGER;
+    private final Javalin app;
+    private final ApplicationSettings settings;
+
+    static {
+        LOGGER = LoggerFactory.getLogger(App.class);
+    }
+
+    @Inject
+    public App(JavalinFactory javalinFactory, ApplicationSettings settings) {
+        this.app = javalinFactory.create();
+        this.settings = settings;
+    }
+
     public static void main(String[] args) throws IOException {
-        Javalin app = Javalin.create(config -> {
-            // Configure OpenAPI
-            OpenApiConfiguration openApiConfig = getOpenApiOptions();
-            config.plugins.register(new OpenApiPlugin(openApiConfig));
-            
-            // Configure Swagger
-            SwaggerConfiguration swaggerConfig = new SwaggerConfiguration();
-            config.plugins.register(new SwaggerPlugin(swaggerConfig));
-            
-            // Register you JSON mapper with whatever library you want
-            ObjectMapper objectMapper = new ObjectMapper(); // customize as needed
-            JsonMapper jsonMapper = new JavalinJackson(objectMapper);
-            config.jsonMapper(jsonMapper);
-            
-            // Re-enabling static files from the 'public' directory
-            config.staticFiles.add("./public", Location.EXTERNAL);
-        });
 
-        // Javalin MVC generates "com.truncon.javalin.mvc.JavalinControllerRegistry" automatically at compile time
-        ControllerRegistry registry = new JavalinControllerRegistry();
-        registry.register(app);
-
-        // Prevent unhandled exceptions from taking down the web server
-        app.exception(Exception.class, (e, ctx) -> {
-            log.error("Encountered an unhandled exception.", e);
-            ctx.status(500);
-        });
-
-        app.start(8080);
+        try{
+            Injector injector = Guice.createInjector(new AppModule());
+            App app = injector.getInstance(App.class);
+            app.start();
+            LOGGER.info("Javalin application started on port: {}", app.settings.getPort());
+        }catch(Exception e) {
+            LOGGER.error("Failed to start Javalin application", e);
+            throw new IOException("Failed to start Javalin application", e);
+        }
     }
 
-    private static OpenApiConfiguration getOpenApiOptions() {
-        OpenApiConfiguration configuration = new OpenApiConfiguration();
-        OpenApiInfo info = configuration.getInfo();
-        info.setTitle("Api Title");
-        info.setVersion("1.0");
-        return configuration;
+
+    /**
+     * Starts the Javalin application on the port specified in the settings.
+     */
+
+    public void start(){
+        app.start(settings.getPort());
     }
+
+    /**
+     * Stops the Javalin application gracefully.
+     */
+
+    public void stop(){
+        app.stop();
+    }
+
 }

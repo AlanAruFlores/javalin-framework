@@ -1,7 +1,1 @@
-com\ar\javalin\base\App.class
-META-INF\annotated-classes\converters.lst
-com\truncon\javalin\mvc\JavalinControllerRegistry.class
-META-INF\annotated-classes\controllers.lst
-META-INF\annotated-classes\containers.lst
 com\ar\javalin\base\models\Item.class
-META-INF\annotated-classes\ws_controllers.lst
