@@ -3,6 +3,7 @@ package com.ar.javalin.base;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.ar.javalin.base.exceptions.api.ExceptionHandlerContext;
 import com.ar.javalin.base.utils.PathUtilsConstants;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -41,7 +42,7 @@ public final class JavalinFactory {
     }
 
     private final Provider<Injector> injectorProvider;
-    private final ExceptionHandlerCon
+    private  ExceptionHandlerContext exceptionHandlerContext;
 
     @Inject
     public JavalinFactory(Provider<Injector> injectorProvider){

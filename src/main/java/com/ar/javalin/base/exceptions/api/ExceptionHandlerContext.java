@@ -7,7 +7,6 @@ public class ExceptionHandlerContext {
 
 
     public ExceptionHandlerContext(){
-        registerStrategy(NotFoundException.class, ExceptionHandlerStrategy);
     }
 
     public <T extends Exception> void registerStrategy(Class<T> exceptionClass, ExceptionHandlerStrategy<T> strategy) {
