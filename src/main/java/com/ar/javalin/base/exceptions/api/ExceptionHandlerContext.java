@@ -3,11 +3,8 @@ import java.util.HashMap;
 import java.util.Map;
 import com.ar.javalin.base.exceptions.api.exceptions.InternalServerException;
 import com.ar.javalin.base.exceptions.api.exceptions.NotFoundException;
-import com.google.inject.Singleton;
-
 import io.javalin.http.Context;
 
-@Singleton
 public class ExceptionHandlerContext {
     private final Map<Class<? extends Exception>, ExceptionHandlerStrategy<? extends Exception>> strategies = new HashMap<>();
 
