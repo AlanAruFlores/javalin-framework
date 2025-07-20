@@ -1,6 +1,5 @@
 package com.ar.javalin.base;
 
-import com.ar.javalin.base.configuration.JpaConfiguration;
 import com.ar.javalin.base.exceptions.api.ExceptionHandlerContext;
 import com.ar.javalin.base.settings.AppSettings;
 import com.ar.javalin.base.settings.ApplicationSettings;
@@ -23,7 +22,6 @@ public final class AppModule extends AbstractModule{
 
         //Exception Handler
         bind(ExceptionHandlerContext.class).toProvider(ExceptionHandlerContext::newInstance).in(Scopes.SINGLETON);
-        bind(JpaConfiguration.class).in(Scopes.SINGLETON);;
     }
 
 }
