@@ -1,5 +1,6 @@
 package com.ar.javalin.base;
 
+import com.ar.javalin.base.exceptions.api.ExceptionHandlerContext;
 import com.ar.javalin.base.settings.AppSettings;
 import com.ar.javalin.base.settings.ApplicationSettings;
 import com.google.inject.AbstractModule;
@@ -19,6 +20,8 @@ public final class AppModule extends AbstractModule{
         bind(ApplicationSettings.class).to(AppSettings.class);
         bind(AppSettings.class).toProvider(AppSettings::newInstance).in(Scopes.SINGLETON);
 
+        //Exception Handler
+        bind(ExceptionHandlerContext.class).toProvider(ExceptionHandlerContext::newInstance).in(Scopes.SINGLETON);
     }
 
 }

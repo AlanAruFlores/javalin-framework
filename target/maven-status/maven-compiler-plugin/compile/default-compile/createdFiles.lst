@@ -1,1 +1,4 @@
-com\ar\javalin\base\models\Item.class
+com\ar\javalin\base\exceptions\api\exceptions\InternalServerException.class
+com\ar\javalin\base\exceptions\api\ExceptionHandlerStrategy.class
+com\ar\javalin\base\exceptions\api\ExceptionHandlerContext.class
+com\ar\javalin\base\dto\response\ErrorResponseDto.class

@@ -42,11 +42,12 @@ public final class JavalinFactory {
     }
 
     private final Provider<Injector> injectorProvider;
-    private  ExceptionHandlerContext exceptionHandlerContext;
+    private ExceptionHandlerContext exceptionHandlerContext;
 
     @Inject
     public JavalinFactory(Provider<Injector> injectorProvider){
         this.injectorProvider = injectorProvider;
+        exceptionHandlerContext = injectorProvider.get().getInstance(ExceptionHandlerContext.class);
     }
 
 
@@ -72,14 +73,7 @@ public final class JavalinFactory {
         registry.register(app);
 
         // Prevent unhandled exceptions from taking down the web server
-        app.exception(Exception.class, (e, ctx) -> {
-            LOGGER.error("Encountered an unhandled exception.", e);
-            ctx.status(500);
-        });
-
-        app.exception(Exception.class, (e, ctx) -> {
-            exceptionHandlerContext.handle(e, ctx);
-        });
+        app.exception(Exception.class, (e, ctx) -> exceptionHandlerContext.handle(e, ctx));
 
         app.wsException(
             Exception.class,

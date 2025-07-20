@@ -48,7 +48,26 @@ public class AppSettings implements ApplicationSettings{
 
     public ConfigWrapper getWebResourcesConfig(){
         return this.configWrapper.atPath("web.resources");
+    }
 
+    public ConfigWrapper getDatabaseConfig() {
+        return this.configWrapper.atPath("database");
+    }
+
+    public String getDbUrl() { 
+        return getDatabaseConfig().getString("url").orElse(null); 
+    }
+    
+    public String getDbUser() { 
+        return getDatabaseConfig().getString("username").orElse(null); 
+    }
+    
+    public String getDbPassword() { 
+        return getDatabaseConfig().getString("password").orElse(null); 
+    }
+    
+    public String getDbDriver() {
+         return getDatabaseConfig().getString("driver").orElse(null); 
     }
 
     private static final class ConfigWrapper {

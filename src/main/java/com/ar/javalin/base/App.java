@@ -4,11 +4,16 @@ import java.io.IOException;
 import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.ar.javalin.base.models.Item;
 import com.ar.javalin.base.settings.ApplicationSettings;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 
 import io.javalin.Javalin;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
 
 
 public final class App {
@@ -16,7 +21,6 @@ public final class App {
     private static final Logger LOGGER;
     private final Javalin app;
     private final ApplicationSettings settings;
-
     static {
         LOGGER = LoggerFactory.getLogger(App.class);
     }
@@ -28,7 +32,12 @@ public final class App {
     }
 
     public static void main(String[] args) throws IOException {
-
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("default");
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(Item.builder().description("init").build());
+        em.getTransaction().commit();
+        em.close();
         try{
             Injector injector = Guice.createInjector(new AppModule());
             App app = injector.getInstance(App.class);
