@@ -34,6 +34,22 @@ Esta aplicación incluye:
 - `GET /swagger`: Interfaz Swagger UI para explorar la API
 - `GET /index.html`: Archivo estático desde el directorio `public`
 
+## Manejo de respuestas de error como JSON en Javalin
+
+Para devolver respuestas de error (o cualquier objeto) como JSON en Javalin, utiliza el método `ctx.json()`. Este método serializa automáticamente tu objeto (por ejemplo, un DTO) a una cadena JSON y establece el encabezado `Content-Type` correctamente. Ejemplo:
+
+```java
+ctx.status(404).json(
+    ErrorResponseDto.builder()
+        .code(404)
+        .message(exception.getMessage())
+        .build()
+);
+```
+
+**Nota:**
+- `ctx.result()` solo acepta un argumento de tipo `String`. Si pasas un objeto (como un DTO), obtendrás un error de compilación. Si necesitas serializar manualmente un objeto, utiliza una librería JSON (por ejemplo, Jackson) para convertirlo a cadena y luego pásalo a `ctx.result()`. Sin embargo, la forma recomendada y más sencilla en Javalin es usar `ctx.json()`.
+
 ## Primeros Pasos
 
 ### Para ejecutar la aplicación:
