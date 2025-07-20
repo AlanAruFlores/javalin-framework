@@ -1,7 +1,6 @@
 package com.ar.javalin.base.exceptions.api;
-
-import com.ar.javalin.base.dto.response.ErrorResponseDto;
+import io.javalin.http.Context;
 
 public interface ExceptionHandlerStrategy <T extends Exception>{
-    ErrorResponseDto handle(T exception);
+    void handle(T exception, Context ctx);
 }
