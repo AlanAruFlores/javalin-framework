@@ -2,7 +2,6 @@ package com.ar.javalin.base;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import com.ar.javalin.base.exceptions.api.ExceptionHandlerContext;
 import com.ar.javalin.base.utils.PathUtilsConstants;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -25,9 +24,6 @@ import io.javalin.openapi.plugin.OpenApiConfiguration;
 import io.javalin.openapi.plugin.OpenApiPlugin;
 import io.javalin.openapi.plugin.swagger.SwaggerConfiguration;
 import io.javalin.openapi.plugin.swagger.SwaggerPlugin;
-import org.h2.tools.Server;
-
-import java.sql.SQLException;
 
 public final class JavalinFactory {
     private static final Logger LOGGER;
@@ -54,10 +50,7 @@ public final class JavalinFactory {
     }
 
 
-    public Javalin create(){
-        // Start H2 Console Server
-        startH2Console();
-        
+    public Javalin create(){   
         Javalin app = Javalin.create(config -> {
             // Configure OpenAPI
             OpenApiConfiguration openApiConfig = getOpenApiOptions();
@@ -86,19 +79,6 @@ public final class JavalinFactory {
             (e, ctx) -> LOGGER.error("Encountered an unhandled exception for WebSockets.", e));
 
         return app;
-    }
-
-    /*
-     * Starts the H2 Console server, which allows for web-based access to the H2 database.
-     */
-    private void startH2Console() {
-        try {
-            // Start H2 Console Server on port 9091
-            Server h2Server = Server.createWebServer("-web", "-webAllowOthers", "-webPort", "9091").start();
-            LOGGER.info("H2 Console started at http://localhost:9091");
-        } catch (SQLException e) {
-            LOGGER.error("Failed to start H2 Console", e);
-        }
     }
 
     private static OpenApiConfiguration getOpenApiOptions() {
