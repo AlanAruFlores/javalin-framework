@@ -4,7 +4,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.OptionalInt;
-
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import com.typesafe.config.ConfigValue;
@@ -15,7 +14,8 @@ public class AppSettings implements ApplicationSettings{
     private static final String APPLICATION_CONFIG_PATH = "./src/main/resources/application.conf";
 
     private final ConfigWrapper configWrapper;   
-    private final Integer PORT_DEFAULT = 8080;
+    private final int PORT_DEFAULT = 8080;
+    private final int H2_PORT_DEFAULT = 8091;
 
 
 
@@ -36,6 +36,11 @@ public class AppSettings implements ApplicationSettings{
         return getWebServerConfig().getInteger("port").orElse(PORT_DEFAULT);
     }
 
+    @Override
+    public int getH2Port(){
+        return getWebServerConfig().getInteger("h2-port").orElse(H2_PORT_DEFAULT);
+    }
+
     @Override 
     public String getHtmlResourcePath(){
         return getWebResourcesConfig().getString("html")
@@ -48,26 +53,6 @@ public class AppSettings implements ApplicationSettings{
 
     public ConfigWrapper getWebResourcesConfig(){
         return this.configWrapper.atPath("web.resources");
-    }
-
-    public ConfigWrapper getDatabaseConfig() {
-        return this.configWrapper.atPath("database");
-    }
-
-    public String getDbUrl() { 
-        return getDatabaseConfig().getString("url").orElse(null); 
-    }
-    
-    public String getDbUser() { 
-        return getDatabaseConfig().getString("username").orElse(null); 
-    }
-    
-    public String getDbPassword() { 
-        return getDatabaseConfig().getString("password").orElse(null); 
-    }
-    
-    public String getDbDriver() {
-         return getDatabaseConfig().getString("driver").orElse(null); 
     }
 
     private static final class ConfigWrapper {

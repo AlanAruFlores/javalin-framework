@@ -1,5 +1,7 @@
 package com.ar.javalin.base;
 
+import com.ar.javalin.base.configuration.H2ConsoleConfiguration;
+import com.ar.javalin.base.configuration.PersistenceConfiguration;
 import com.ar.javalin.base.exceptions.api.ExceptionHandlerContext;
 import com.ar.javalin.base.settings.AppSettings;
 import com.ar.javalin.base.settings.ApplicationSettings;
@@ -15,6 +17,8 @@ public final class AppModule extends AbstractModule{
         bind(Injector.class).toProvider(RequestInjectorProvider.class);
         bind(JavalinFactory.class);
         bind(App.class);
+        bind(PersistenceConfiguration.class).in(Scopes.SINGLETON);
+        bind(H2ConsoleConfiguration.class).in(Scopes.SINGLETON);
 
         //Settings
         bind(ApplicationSettings.class).to(AppSettings.class);

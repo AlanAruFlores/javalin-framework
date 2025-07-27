@@ -2,7 +2,6 @@ package com.ar.javalin.base;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import com.ar.javalin.base.exceptions.api.ExceptionHandlerContext;
 import com.ar.javalin.base.utils.PathUtilsConstants;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -51,7 +50,7 @@ public final class JavalinFactory {
     }
 
 
-    public Javalin create(){
+    public Javalin create(){   
         Javalin app = Javalin.create(config -> {
             // Configure OpenAPI
             OpenApiConfiguration openApiConfig = getOpenApiOptions();
@@ -81,7 +80,6 @@ public final class JavalinFactory {
 
         return app;
     }
-
 
     private static OpenApiConfiguration getOpenApiOptions() {
         OpenApiConfiguration configuration = new OpenApiConfiguration();
