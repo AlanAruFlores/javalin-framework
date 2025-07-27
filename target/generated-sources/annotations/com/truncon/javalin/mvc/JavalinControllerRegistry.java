@@ -22,21 +22,21 @@ public final class JavalinControllerRegistry implements ControllerRegistry {
 
     private void httpHandler0(Context ctx) throws Exception {
         HttpContext wrapper = new JavalinHttpContext(ctx);
-        ItemController controller = new ItemController();
-        ActionResult result = controller.index();
-        result.execute(wrapper);
-    }
-
-    private void httpHandler1(Context ctx) throws Exception {
-        HttpContext wrapper = new JavalinHttpContext(ctx);
         HomeController controller = new HomeController();
         ActionResult result = controller.getLoginPage();
         result.execute(wrapper);
     }
 
+    private void httpHandler1(Context ctx) throws Exception {
+        HttpContext wrapper = new JavalinHttpContext(ctx);
+        ItemController controller = new ItemController();
+        ActionResult result = controller.index();
+        result.execute(wrapper);
+    }
+
     @Override
     public void register(Javalin app) {
-        app.get("/index", this::httpHandler0);
-        app.get("/", this::httpHandler1);
+        app.get("/", this::httpHandler0);
+        app.get("/index", this::httpHandler1);
     }
 }
