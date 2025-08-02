@@ -13,13 +13,15 @@ import lombok.extern.slf4j.Slf4j;
 @Getter
 public class PersistenceConfiguration{
     private EntityManagerFactory emf;
-
+    private String persistenceUnitName;
+    
     public PersistenceConfiguration(){
-        emf = Persistence.createEntityManagerFactory("default");
+        persistenceUnitName = System.getenv("JPA_PROFILE");
+        emf = Persistence.createEntityManagerFactory(persistenceUnitName);
     }
 
     public void initPersistenceConfiguration(){
-        log.info("Initializing Persistence Configuration");
+        log.info("Initializing Persistence Configuration on persistence unit: {}", persistenceUnitName);
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         initCreatingEntities(em);
