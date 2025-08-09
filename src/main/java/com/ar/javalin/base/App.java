@@ -2,6 +2,8 @@ package com.ar.javalin.base;
 
 import java.io.IOException;
 import javax.inject.Inject;
+
+import com.ar.javalin.base.configuration.EntityInitalizeConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,16 +23,19 @@ public final class App {
     private final ApplicationSettings settings;
     private final H2ConsoleConfiguration h2Configuration;
     private final PersistenceConfiguration persistenceConfiguration;
+    private final EntityInitalizeConfiguration entityInitalizeConfiguration;
+
     static {
         LOGGER = LoggerFactory.getLogger(App.class);
     }
 
     @Inject
-    public App(JavalinFactory javalinFactory, ApplicationSettings settings, H2ConsoleConfiguration h2ConsoleConfiguration, PersistenceConfiguration persistenceConfiguration) { 
+    public App(JavalinFactory javalinFactory, ApplicationSettings settings, H2ConsoleConfiguration h2ConsoleConfiguration, PersistenceConfiguration persistenceConfiguration, EntityInitalizeConfiguration entityInitalizeConfiguration) {
         this.app = javalinFactory.create();
         this.settings = settings;
         this.h2Configuration = h2ConsoleConfiguration;
         this.persistenceConfiguration = persistenceConfiguration;
+        this.entityInitalizeConfiguration = entityInitalizeConfiguration;
     }
 
     public static void main(String[] args) throws IOException {
@@ -38,7 +43,8 @@ public final class App {
             Injector injector = Guice.createInjector(new AppModule());
             App app = injector.getInstance(App.class);
 
-            app.persistenceConfiguration.initPersistenceConfiguration();
+            app.persistenceConfiguration.startPersistenceConfiguration();
+            app.entityInitalizeConfiguration.initEntityConfiguration(app.persistenceConfiguration.getEmf());
             app.h2Configuration.startH2Console(String.valueOf(app.settings.getH2Port()));
             app.start();
             LOGGER.info("Javalin application started on port: {}", app.settings.getPort());

@@ -1,51 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <persistence xmlns="https://jakarta.ee/xml/ns/persistence"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_1.xsd"
              version="3.1">
-
-
-    <!--Develop Profile for persistence-->
-    <persistence-unit name="development" transaction-type="RESOURCE_LOCAL">
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <!-- Hibernate autodetects entities in the classpath -->
-        <properties>
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1"/>
-            <property name="jakarta.persistence.jdbc.user" value="sa"/>
-            <property name="jakarta.persistence.jdbc.password" value=""/>
-            <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver"/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
-            <property name="hibernate.show_sql" value="true"/>
-            <property name="hibernate.format_sql" value="true"/>
-            <property name="hibernate.archive.autodetection" value="class"/>
-        </properties>
+    <persistence-unit name="production">
     </persistence-unit>
 
-
-    <!--Production Profile for persistence - MySQL GCP Cloud SQL-->        
-    <persistence-unit name="production" transaction-type="RESOURCE_LOCAL">
-        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-        <properties>
-            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://${GCP_DB_HOST}:${GCP_DB_PORT}/${GCP_DB_NAME}?useSSL=false&amp;allowPublicKeyRetrieval=true"/>
-            <property name="jakarta.persistence.jdbc.user" value="${GCP_DB_USER}"/>
-            <property name="jakarta.persistence.jdbc.password" value="${GCP_DB_PASSWORD}"/>
-            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
-            <property name="hibernate.hbm2ddl.auto" value="validate"/>
-            <property name="hibernate.show_sql" value="false"/>
-            <property name="hibernate.format_sql" value="false"/>
-            <property name="hibernate.archive.autodetection" value="class"/>
-            <!-- Pool Connections -->
-            <property name="hibernate.connection.provider_class" value="com.zaxxer.hikari.hibernate.HikariConnectionProvider"/>
-            <property name="hibernate.hikari.connectionTimeout" value="20000"/>
-            <property name="hibernate.hikari.maximumPoolSize" value="10"/>
-            <property name="hibernate.hikari.minimumIdle" value="5"/>
-            <property name="hibernate.hikari.idleTimeout" value="300000"/>
-            <property name="hibernate.hikari.maxLifetime" value="1200000"/>
-            <property name="hibernate.connection.characterEncoding" value="utf8"/>
-            <property name="hibernate.connection.useUnicode" value="true"/>
-            <property name="hibernate.connection.autoReconnect" value="true"/>
-        </properties>
+    <persistence-unit name="development">
     </persistence-unit>
-</persistence> 
+</persistence>
