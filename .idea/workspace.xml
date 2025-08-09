@@ -4,15 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8d7ea3a6-4927-40ba-aafd-cf89f96c1260" name="Changes" comment="" />
+    <list default="true" id="8d7ea3a6-4927-40ba-aafd-cf89f96c1260" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ar/javalin/base/configuration/H2ConsoleConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ar/javalin/base/configuration/H2ConsoleConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ar/javalin/base/configuration/H2ConsoleConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ar/javalin/base/configuration/H2ConsoleConfiguration.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 8
-}]]></component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="30TRWokJ3WMimYDFlK32CY06Bwz" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -20,12 +28,31 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.App.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "feature/mvc-javalin",
     "last_opened_file_path": "C:/Users/Alan/Desktop/javalin/first-project"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="App" type="Application" factoryName="Application">
+      <envs>
+        <env name="JPA_PROFILE" value="production" />
+        <env name="GCP_DB_HOST" value="34.30.129.124" />
+        <env name="GCP_DB_PORT" value="3306" />
+        <env name="GCP_DB_NAME" value="javaliBaseDb" />
+        <env name="GCP_DB_USER" value="root" />
+        <env name="GCP_DB_PASSWORD" value="x){x_`Z0K*p&amp;oZpe" />
+      </envs>
+      <option name="MAIN_CLASS_NAME" value="com.ar.javalin.base.App" />
+      <module name="first-project" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="8d7ea3a6-4927-40ba-aafd-cf89f96c1260" name="Changes" comment="" />

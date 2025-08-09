@@ -1,4 +1,10 @@
+META-INF\annotated-classes\converters.lst
 com\ar\javalin\base\exceptions\api\exceptions\InternalServerException.class
+com\ar\javalin\base\JavalinFactory.class
+com\ar\javalin\base\RequestModule.class
+META-INF\annotated-classes\ws_controllers.lst
 com\ar\javalin\base\exceptions\api\ExceptionHandlerStrategy.class
 com\ar\javalin\base\exceptions\api\ExceptionHandlerContext.class
+META-INF\annotated-classes\controllers.lst
 com\ar\javalin\base\dto\response\ErrorResponseDto.class
+META-INF\annotated-classes\containers.lst
