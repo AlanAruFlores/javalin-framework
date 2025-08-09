@@ -1,5 +1,6 @@
 package com.ar.javalin.base;
 
+import com.ar.javalin.base.configuration.EntityInitalizeConfiguration;
 import com.ar.javalin.base.configuration.H2ConsoleConfiguration;
 import com.ar.javalin.base.configuration.PersistenceConfiguration;
 import com.ar.javalin.base.exceptions.api.ExceptionHandlerContext;
@@ -18,6 +19,7 @@ public final class AppModule extends AbstractModule{
         bind(JavalinFactory.class);
         bind(App.class);
         bind(PersistenceConfiguration.class).in(Scopes.SINGLETON);
+        bind(EntityInitalizeConfiguration.class).in(Scopes.SINGLETON);
         bind(H2ConsoleConfiguration.class).in(Scopes.SINGLETON);
 
         //Settings

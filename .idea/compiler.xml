@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
           <entry name="$MAVEN_REPOSITORY$/com/truncon/javalin-mvc-generator/5.0.1/javalin-mvc-generator-5.0.1.jar" />
           <entry name="$MAVEN_REPOSITORY$/com/truncon/javalin-mvc-api/5.0.1/javalin-mvc-api-5.0.1.jar" />
           <entry name="$MAVEN_REPOSITORY$/com/truncon/javalin-mvc-core/5.0.1/javalin-mvc-core-5.0.1.jar" />

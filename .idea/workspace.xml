@@ -5,15 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d7ea3a6-4927-40ba-aafd-cf89f96c1260" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/material_theme_project_new.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ar/javalin/base/configuration/EntityInitalizeConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ar/javalin/base/exceptions/app/exceptions/DatabaseInitializeException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ar/javalin/base/configuration/H2ConsoleConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ar/javalin/base/configuration/H2ConsoleConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/ar/javalin/base/configuration/H2ConsoleConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ar/javalin/base/configuration/H2ConsoleConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ar/javalin/base/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ar/javalin/base/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ar/javalin/base/AppModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ar/javalin/base/AppModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ar/javalin/base/configuration/PersistenceConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ar/javalin/base/configuration/PersistenceConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ar/javalin/base/exceptions/api/exceptions/InternalServerException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ar/javalin/base/exceptions/api/exceptions/InternalServerException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ar/javalin/base/exceptions/api/exceptions/NotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ar/javalin/base/exceptions/api/exceptions/NotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ar/javalin/base/dto/response/ErrorResponseDto.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ar/javalin/base/dto/response/ErrorResponseDto.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/ar/javalin/base/exceptions/api/exceptions/InternalServerException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/ar/javalin/base/exceptions/api/exceptions/InternalServerException.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -33,7 +50,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "feature/mvc-javalin",
-    "last_opened_file_path": "C:/Users/Alan/Desktop/javalin/first-project"
+    "last_opened_file_path": "C:/Users/Alan/Desktop/javalin/first-project",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors"
   }
 }]]></component>
   <component name="RunManager">
@@ -62,5 +80,15 @@
       <updated>1753649612163</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.hibernate.exception.GenericJDBCException" package="org.hibernate.exception" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
