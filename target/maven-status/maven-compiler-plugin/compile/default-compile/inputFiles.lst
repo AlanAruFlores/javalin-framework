@@ -2,6 +2,8 @@ C:\Users\Alan\Desktop\javalin\first-project\src\main\java\com\ar\javalin\base\co
 C:\Users\Alan\Desktop\javalin\first-project\src\main\java\com\ar\javalin\base\GuiceInjector.java
 C:\Users\Alan\Desktop\javalin\first-project\src\main\java\com\ar\javalin\base\dto\response\ErrorResponseDto.java
 C:\Users\Alan\Desktop\javalin\first-project\src\main\java\com\ar\javalin\base\exceptions\api\ExceptionHandlerContext.java
+C:\Users\Alan\Desktop\javalin\first-project\src\main\java\com\ar\javalin\base\configuration\H2ConsoleConfiguration.java
+C:\Users\Alan\Desktop\javalin\first-project\src\main\java\com\ar\javalin\base\configuration\PersistenceConfiguration.java
 C:\Users\Alan\Desktop\javalin\first-project\src\main\java\com\ar\javalin\base\settings\ApplicationSettings.java
 C:\Users\Alan\Desktop\javalin\first-project\src\main\java\com\ar\javalin\base\App.java
 C:\Users\Alan\Desktop\javalin\first-project\src\main\java\com\ar\javalin\base\exceptions\api\exceptions\NotFoundException.java

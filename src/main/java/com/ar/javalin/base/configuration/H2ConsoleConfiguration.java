@@ -12,6 +12,13 @@ public class H2ConsoleConfiguration {
 
     public void startH2Console(String port) {
         try {
+            String persistenceUnitName = System.getenv("JPA_PROFILE");
+
+            if(!persistenceUnitName.equalsIgnoreCase("development")) {
+                log.info("H2 Console is only available in development mode. Current mode: {}", persistenceUnitName);
+                return;
+            }
+
             h2Server = Server.createWebServer("-web", "-webAllowOthers", "-webPort", port).start();
             log.info("H2 Console started at http://localhost:9091");
         } catch (SQLException e) {
