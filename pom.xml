@@ -147,6 +147,11 @@
             <artifactId>jackson-datatype-jsr310</artifactId>
             <version>${dependencies.jackson.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.reflections</groupId>
+            <artifactId>reflections</artifactId>
+            <version>0.10.2</version>
+        </dependency>
     </dependencies>
 
    <build>
